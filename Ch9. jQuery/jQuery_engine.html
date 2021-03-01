@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>검색엔진선택</title>
+		<style>
+			.all {
+				width : 400px;
+			}
+			.top {
+				width : 95%;
+				heigh : 50px;
+				padding : 10px 0 10px 0;
+				margin : 0 10px 10px 10px;
+				box-sizing : border-box;
+				border : 1px solid;
+				text-align : center;
+			}
+			.mid {
+				width : 100%;
+				height : 200px;
+				padding : 20px 20px 20px 20px;
+				box-sizing : border-box;
+				border : 1px solid;
+				text-align : center;
+			}
+			.mid img {
+				width : 80%;
+				height : 100px;
+			}
+			.bot {
+					margin-top : 20px;
+					text-align : center;
+					clear : both;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#engine").change(function(){
+					$("#img1").attr("src",$(this).val()+".png");
+					/*
+					if($(this).val() == "google") $("#p1").text("https://www.google.co.kr/");
+					else if($(this).val() == "naver") $("#p1").text("https://www.naver.com/");
+					else if($(this).val() == "daum") $("#p1").text("https://www.daum.net/");
+					*/
+					var url = "";
+					switch($(this).val()) {
+						case "google" :
+							url = "<a href='https://www.google.co.kr'>https://www.google.co.kr</a>";
+							break;
+						case "naver" :
+							url = "<a href='https://www.naver.com'>https://www.naver.com</a>";
+							break;
+						case "daum" :
+							url = "<a href='https://www.daum.net'>https://www.daum.net</a>";
+							break;
+					}
+					console.log(url);
+					$("#p1").html(url);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="all">
+			<div class="top">jQuery</div>
+			<div class="mid">
+				<a href="#" id="a1"><img id="img1"></a>
+				<p id="p1"></p>
+			</div>
+			<div class="bot">
+			<form name="form">
+				<select name="engine" id="engine">
+					<option value="">검색엔진</option>
+					<option value="google">구글</option>
+					<option value="naver">네이버</option>
+					<option value="daum">다음</option>
+			</form>
+			</div>
+		</div>
+	</body>
+</html>

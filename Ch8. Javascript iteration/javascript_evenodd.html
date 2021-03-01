@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>카드만들기</title>
+		<style>
+		.tot {
+			width : 400px;  
+		}
+		.top {
+			width : 100%;
+			padding : 10px 0 10px 0;
+			background-color : green;
+			border : 2px solid;
+			border-radius : 15px;
+			text-align : center;
+			font-size : 15pt;
+		}
+		.mid {
+				width : 100%;
+				height : 30px;
+				padding : 10px 0 5px 0;
+				text-align : center;
+			}
+		#bot {
+			width : 100%;
+		}
+		.card1 {
+			width : 50px;
+			height : 70px;
+			background-color : green;
+			border : 1px solid;
+			margin : 5px 5px 5px 5px;
+			text-align : center;
+			float: left;
+		}
+		.card2 {
+			width : 50px;
+			height : 70px;
+			border : 1px solid;
+			margin : 5px 5px 5px 5px;
+			text-align : center;
+			float: left;
+		}
+		.cardClear {
+			clear : both;
+		}
+		</style>
+		<script>
+			function show() {
+				var num1 = parseInt(form.txt_start.value);
+				var num2 = parseInt(form.txt_end.value);
+				var temp = 0;
+				
+				if (form.txt_start.value == ""){
+					alert("시작 값을 입력하시오.");
+					form.txt_start.focus();
+					return;
+				}
+				if (form.txt_end.value == ""){
+					alert("종료 값을 입력하시오.");
+					form.txt_end.focus();
+					return;
+				}
+				if (num1 > num2){
+					temp = num1;
+					num1 = num2;
+					num2 = temp;
+				}
+				
+				var str = "";
+				for (var i=1; i <=(num2-num1+1); i++){
+					if ((num1+i-1)%2 == 0)
+						str += "<div class='card1'>" + (num1+i-1) + "</div>";
+					else
+						str += "<div class='card2'>" + (num1+i-1) + "</div>";
+					
+					if (i%5 == 0 && i != 1){
+						str += "<div class='cardClear'></div>";
+					}
+				}
+				
+				document.getElementById("bot").innerHTML = str;
+			}
+			
+			function del() {
+				var str = "";
+				document.getElementById("bot").innerHTML = "";
+				form.reset();
+			}
+		</script>
+	</head>
+	<body>
+		<div class="tot">
+			<div class="top">카드 만들기</div>
+			<form name="form">
+				<div class="mid">
+					시작 <input type="text" name="txt_start" size='5'>
+					종료 <input type="text" name="txt_end" size='5'>
+					<input type="button" value="카드보기" onclick="show();">
+					<input type="button" value="지우기" onclick="del();">
+				</div>
+			</form>
+			<div class="bot" id="bot"></div>
+		</div>
+	</body>
+</html>

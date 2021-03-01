@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>설문작성</title>
+		<style>
+			div {
+				width : 450px;
+			}
+			.c1 {
+				padding : 10px;
+				margin : 10px;
+				width: 400px;
+				background-color : yellow;
+				border-radius : 10px;
+				border : 1px solid;
+				text-align : center;
+			}
+			div > p {
+				width : 100%;
+				height : 45px;
+				padding : 10px;
+				box-sizing : border-box;
+				background-color : yellow;
+			}
+			input[type=text], input[type=password] {
+				width : 95%;
+				height : 40px;
+				font-size : 15px;
+			}
+			input[type=button], input[type=reset] {
+				width : 45%;
+				height : 40px;
+				background-color : yellow;
+				border : yellow;
+				font-size : 15px;
+				margin : 10px 0 12px 12px;
+			}
+			img {
+				width : 150px;
+				height : 150px;
+				margin : 10px 10px 15px 15px; 
+			}
+		</style>
+		<script>
+			function show() {
+				var str = "";
+				
+				str = str + myform.txt_name.value + "님은\n";
+				str = str + myform.fruit.value + "을(를)\n";
+				str = str + "좋아하십니다.";
+				
+				alert(str);
+			}
+		</script>
+	</head>
+	<body>
+	<form name="myform" method="get" action="05.php">
+		<div class="c1">
+			당신이 좋아하는 과일을 선택해 보세요.
+		</div>
+		<div class="c2">
+			<p>
+			<label for="txt_name">성명</label><br>
+			</p>
+			<input type="text" name="txt_name" id="txt_name" placeholder="성명 입력">
+		</div>
+		<div class="c2">
+			<p>
+			<label for="p_password">비밀번호</label><br>
+			</p>
+			<input type="password" name="password" id="p_password" placeholder="비밀번호 입력">
+			
+		</div>
+		<div>
+			<p>
+			<label>좋아하는 과일을 선택하세요.</label><br>
+			</p>
+			<input type="radio" name="fruit" id="stro" value="딸기">
+			<label for="stro"><img src="stra.jpg" ></label>
+			<input type="radio" name="fruit" id="bana" value="바나나">
+			<label for="bana"><img src="bana.jpg"></label>
+			<br>
+			<input type="radio" name="fruit" id="appl" value="사과">
+			<label for="appl"><img src="appl.jpg"></label>
+			<input type="radio" name="fruit" id="wate" value="수박">
+			<label for="wate"><img src="wate.jpg"></label>
+		</div>
+		<div>
+			<input type="button" value="결과보기" onclick = "show();">
+			<input type="reset" value="취소">
+		</div>
+	</form>
+	</body>
+</html>

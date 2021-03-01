@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery연습</title>
+		<style>
+			.all {
+				width : 400px;
+			}
+			.top {
+				width : 100%;
+				heigh : 50px;
+				padding : 10px 0 10px 0;
+				border : 1px solid;
+				text-align : center;
+			}
+			.mid {
+				width : 100%;
+				height : 100px;
+				text-align : center;
+				padding : 20px 20px 20px 20px;
+			}
+			.mid > p {
+				width : 100px;
+				height : 100px;
+				margin : 0 10px 0 10px;
+				text-align : center;
+				border : 1px solid;
+				float : left;
+			}
+			.bot {
+					text-align : center;
+					clear : both;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#bt1").click(function(){
+					$(".mid_1").show();
+				});
+				$("#bt2").click(function(){
+					$(".mid_1").hide();
+				});
+				$("#bt3").click(function(){
+					$(".mid_1").toggle();
+				});
+				
+				/*
+				$(".mid_1").mouseenter(function(){
+					$(this).css({"background-color":$(this).text(), "color":"white"});
+				});
+				$(".mid_1").mouseleave(function(){
+					$(this).css({"background-color":"white", "color":"black"});
+				});
+				
+				$(".mid_1").click(function(){
+					$(this).hide();
+				});
+				*/
+				
+				$(".mid_1").on({
+					mouseenter : function(){
+						$(this).css({"background-color":$(this).text(), "color":"white"});
+					},
+					mouseleave : function(){
+						$(this).css({"background-color":"white", "color":"black"});
+					},
+					click : function(){
+						$(this).hide();
+					},
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="all">
+			<div class="top">
+				jQuery연습
+			</div>
+			<div class="mid">
+				<p class="mid_1" id="Red">Red</p>
+				<p class="mid_1" id="Green">Green</p>
+				<p class="mid_1" id="Blue">Blue</p>
+			</div>
+			<div class="bot">
+			<form name="form">
+				<input type="button" value="모두보기" id="bt1">
+				<input type="button" value="모두숨기기" id="bt2">
+				<input type="button" value="전환하기" id="bt3">
+			</form>
+			</div>
+		</div>
+	</body>
+</html>

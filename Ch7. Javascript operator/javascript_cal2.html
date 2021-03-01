@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>간단한 계산기2</title>
+		<style>
+			.top {
+				width : 400px;
+				margin-bottom : 15px;
+				background-color : yellow;
+				border : 2px solid;
+				border-radius : 10px;
+				font-size : 15pt;
+				text-align : center;
+				box-sizing : border-box;
+			}
+			.mid {
+				width : 400px;
+				height : 330px;
+				padding : 10px 10px 5px 10px;
+				border : 2px solid;
+				box-sizing : border-box;
+			}
+			.mid_top {
+				width : 100%;
+				height : 100px;
+				border : 1px solid;
+				text-align : center;
+			}
+			form {
+				text-align : center;
+				margin : 10px;
+			}
+			input[type=button] {
+				width : 50px;
+				height : 35px;
+				font-size : 12pt;
+				margin : 2px 1px 2px 1px;
+			}
+		</style>
+		<script>
+			function evalMake(x) {
+				var str = document.getElementById("msg").innerHTML ;
+				str = str+ x
+				document.getElementById("msg").innerHTML = str;
+			}
+			function evalClear() {
+				document.getElementById("msg").innerHTML = "";
+			}
+			function evalClearLast() {
+				var str = document.getElementById("msg").innerHTML ;
+				str = str.substr(0,str.length-1);
+				//.length : 문자열 길이를 알려줌
+				//.substr(시작, 마지막)
+				document.getElementById("msg").innerHTML = str;
+			}
+			function evalDo() {
+				var str = document.getElementById("msg").innerHTML ;
+				str = eval(str);
+				document.getElementById("msg").innerHTML = str;
+			}
+		</script>
+	</head>
+	<body>
+		<div class="top">자바스크립트 계산기
+		</div>
+		<div class="mid">
+			<div class="mid_top" id="msg">
+			</div>
+			<form name="form">
+				<div class="1st">
+					<input type="button" value="CE" onclick="evalClear();">
+					<input type="button" value="C" onclick="evalClearLast();">
+					<input type="button" value="." onclick="evalMake('.');">
+					<input type="button" value="/" onclick="evalMake('/');">
+				</div>
+				<div class="2nd">
+					<input type="button" value="7" onclick="evalMake('7');">
+					<input type="button" value="8" onclick="evalMake('8');">
+					<input type="button" value="9" onclick="evalMake('9');">
+					<input type="button" value="*" onclick="evalMake('*');">
+				</div>
+				<div class="3rd">
+					<input type="button" value="4" onclick="evalMake('4');">
+					<input type="button" value="5" onclick="evalMake('5');">
+					<input type="button" value="6" onclick="evalMake('6');">
+					<input type="button" value="-" onclick="evalMake('-');">
+				</div>
+				<div class="4th">
+					<input type="button" value="1" onclick="evalMake('1');">
+					<input type="button" value="2" onclick="evalMake('2');">
+					<input type="button" value="3" onclick="evalMake('3');">
+					<input type="button" value="+" onclick="evalMake('+');">
+				</div>
+				<div class="5th">
+					<input type="button" value="(" onclick="evalMake('(');">
+					<input type="button" value="0" onclick="evalMake('0');">
+					<input type="button" value=")" onclick="evalMake(')');">
+					<input type="button" value="=" onclick="evalDo('=');">
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

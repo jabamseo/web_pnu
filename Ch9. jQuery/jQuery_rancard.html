@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>랜덤카드 구분하기</title>
+		<style>
+			.all {
+				width : 400px;
+			}
+			.top {
+				width : 100%;
+				heigh : 50px;
+				padding : 10px 0 10px 0;
+				border : 1px solid;
+				text-align : center;
+			}
+			.mid {
+				width : 100%;
+				height : 100px;
+				padding : 20px 0 20px 10px;
+			}
+			.mid > p {
+				width : 12%;
+				height : 50px;
+				margin : 2px 2px 2px 2px;
+				color : black;
+				text-align : center;
+				border : 1px solid black;
+				float : left;
+			}
+			.bot {
+					text-align : center;
+					clear : both;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#bt1").click(function(){
+					for(var i=1; i<=2; i++)
+						for(var j=1; j<=7; j++){
+							var num = Math.floor(Math.random()*99)+1;
+							$("#"+i+"-"+j).text(num);
+							}
+				});
+				$("#bt2").click(function(){
+					for(var i=1; i<=2; i++)
+						for(var j=1; j<=7; j++){
+							$("#"+i+"-"+j).text("");
+							$("#"+i+"-"+j).css({"background-color":"white", "color":"black"});
+							}
+				});
+				
+				$(".mid_1").on({
+					click : function(){
+						if ($(this).text()%2 == 1 && $(this).text() != ""){
+							$(this).css({"background-color":"blue", "color":"white"});}
+						else if($(this).text()%2 == 0 && $(this).text() != ""){
+							$(this).css({"background-color":"red", "color":"white"});}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="all">
+			<div class="top">
+				jQuery DOM 제어
+			</div>
+			<div class="mid">
+				<p class="mid_1" id="1-1"></p>
+				<p class="mid_1" id="1-2"></p>
+				<p class="mid_1" id="1-3"></p>
+				<p class="mid_1" id="1-4"></p>
+				<p class="mid_1" id="1-5"></p>
+				<p class="mid_1" id="1-6"></p>
+				<p class="mid_1" id="1-7"></p>
+				<br>
+				<p class="mid_1" id="2-1"></p>
+				<p class="mid_1" id="2-2"></p>
+				<p class="mid_1" id="2-3"></p>
+				<p class="mid_1" id="2-4"></p>
+				<p class="mid_1" id="2-5"></p>
+				<p class="mid_1" id="2-6"></p>
+				<p class="mid_1" id="2-7"></p>
+			</div>
+			<div class="bot">
+			<form name="form">
+				<input type="button" value="번호생성" id="bt1">
+				<input type="button" value="번호지우기" id="bt2">
+			</form>
+			</div>
+		</div>
+	</body>
+</html>

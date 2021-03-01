@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>구구단</title>
+		<style>
+			.tot {
+				width : 400px;  
+			}
+			.top {
+				width : 100%;
+				padding : 10px 0 10px 0;
+				background-color : green;
+				border : 2px solid;
+				border-radius : 15px;
+				text-align : center;
+				font-size : 15pt;
+			}
+			.mid {
+				width : 100%;
+				height : 30px;
+				padding : 10px 0 5px 0;
+				text-align : center;
+			}
+			#dan {
+				margin-right : 3px;
+			}
+			input[type=button] {
+				width : 70px;
+				margin : 0 3px 0 3px;
+			}
+			.bot {
+				width : 100%;
+				height : 250px;
+				padding-top : 10px;
+				border : 2px solid;
+				text-align : center;
+			}
+			img {
+				width : 50px;
+				height : 50px;
+			}
+		</style>
+		<script>
+			function show(){
+				var str = "";
+				if (form.dan.value == ""){
+					alert("단을 선택하세요.");
+				}
+				else
+					for(var i=1; i<=9; i++){
+						str = str + form.dan.value + "x" + i + "=" + form.dan.value*i + "<br>";
+					}
+				document.getElementById("bot").innerHTML = str;
+			}
+			function ran_show(){
+				var str = ""
+				var dan = Math.floor(Math.random()*8)+2;
+				var i = Math.floor(Math.random()*9)+1;
+				var ans = dan * i;
+				var ans10 = Math.floor(ans/10);
+				var ans1 = ans % 10; 
+				
+				str = "<img src='" + dan + ".png'>" + "<img src='x.png'>" + "<img src='" + i + ".png'>" + "<img src='=.png'>";
+				
+				if (ans10 == 0)
+					str += "";
+				else
+					str += "<img src='" + ans10 + ".png'>";
+				str += "<img src='" + ans1 + ".png'>";
+				
+				document.getElementById("bot").innerHTML = str;
+			}
+			function del(){
+				document.getElementById("bot").innerHTML = "";
+			}
+		</script>
+	</head>
+	<body>
+		<div class="tot">
+			<div class="top">구구단 학습하기</div>
+			<form name="form">
+				<div class="mid">
+					<select name="dan" id="dan">
+						<option value="">단선택</option>
+						<option value="1">1단</option>
+						<option value="2">2단</option>
+						<option value="3">3단</option>
+						<option value="4">4단</option>
+						<option value="5">5단</option>
+						<option value="6">6단</option>
+						<option value="7">7단</option>
+						<option value="8">8단</option>
+						<option value="9">9단</option>
+					<input type="button" value="단보기" onclick="show();">
+					<input type="button" value="랜덤보기" onclick="ran_show();">
+					<input type="button" value="지우기" onclick="del();">
+				</div>
+			</form>
+			<div class="bot" id="bot"></div>
+		</div>
+	</body>
+</html>

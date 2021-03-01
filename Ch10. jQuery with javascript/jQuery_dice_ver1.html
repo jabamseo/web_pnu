@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>주사위게임</title>
+		<style>
+			.all {
+				width : 400px;
+			}
+			.top {
+				width : 100%;
+				heigh : 50px;
+				padding : 10px 0 10px 0;
+				border : 1px solid;
+				box-sizing : border-box;
+				text-align : center;
+			}
+			.mid {
+				width : 100%;
+				height : 200px;
+				padding : 20px 0px 20px 0px;
+				text-align : center;
+			}
+			.bot1 {
+					width : 100%;
+					height : 75px;
+					padding : 10px 0px 10px 0px;
+					border : 1px solid;
+					box-sizing : border-box;
+					text-align : center;
+			}
+			.bot2 {
+					width : 100%;
+					height : 60px;
+					padding : 10px 0px 10px 0px;
+					margin-top : 10px;
+					border : 1px solid;
+					box-sizing : border-box;
+					text-align : center;
+			}
+			img {
+				width : 50px;
+				height : 50px;
+				border : 1px solid black;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			var clickCnt = 0;
+			var winCnt = 0;
+			$(document).ready(function(){
+				$("p>img").click(function(){
+					clickCnt++;
+					
+					var n = $(this).attr("src");//n = n.substr(6,1);
+					n = n.replace("./img/","");
+					n = parseInt(n.replace(".png",""));
+					
+					var com = Math.floor(Math.random()*6) + 1; //1~6
+					
+					$("#img1").attr("src", "./img/"+n+".png");
+					$("#img2").attr("src", "./img/c"+com+".png");
+					
+					var str = ""
+					if (n == com) {
+						str = str + "맞았습니다." + "<br>";
+						winCnt++;
+					}
+					else {
+						str = str + "틀렸습니다." + "<br>";
+					}
+					str = str + "전체횟수 : " + clickCnt + ", ";
+					str = str + "맞은횟수 : " + winCnt;
+					$("#msg").html(str);
+				});
+				$("#bt1").click(function(){
+					$("#img1").attr("src", "./img/q.png");
+					$("#img2").attr("src", "./img/q.png");
+					$("#msg").html("");
+					clickCnt = 0; winCnt = 0;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="all">
+			<div class="top">주사위게임</div>
+			<div class="mid">
+			<form name="form">
+				<p>
+				<img src="./img/1.png">
+				<img src="./img/2.png">
+				<img src="./img/3.png">
+				</p>
+				<p>
+				<img src="./img/4.png">
+				<img src="./img/5.png">
+				<img src="./img/6.png">
+				</p>
+				<p>
+				<input type="button" value="다시하기" id="bt1">
+				</p>
+			</form>
+			</div>
+			<div class="bot1">
+				<img src="./img/q.png" id="img1">
+				<img src="./img/vs.png">
+				<img src="./img/q.png" id="img2">
+			</div>
+			<div class="bot2" id="msg"></div>
+		</div>
+	</body>
+</html>
